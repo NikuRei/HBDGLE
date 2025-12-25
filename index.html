@@ -2,33 +2,47 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Happy Birthday 🎉</title>
 
 <style>
 body {
-  background: linear-gradient(to bottom, #213448, #547792);
+  margin: 0;
+  min-height: 100vh;
   font-family: 'Comic Sans MS', cursive;
+  background: linear-gradient(to bottom, #213448, #547792);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  overflow: hidden;
+}
+
+/* MAIN CONTAINER (Cardd-style) */
+.container {
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
 }
 
 /* TEXT */
 h1 {
-  margin-top: 40px;
-  font-size: 3em;
+  font-size: 2.5em;
   color: #fff;
+  margin-bottom: 20px;
   animation: pop 1.5s ease-in-out infinite alternate;
 }
 
 @keyframes pop {
   from { transform: scale(1); }
-  to { transform: scale(1.1); }
+  to { transform: scale(1.08); }
 }
 
 /* CAKE */
 .cake {
   position: relative;
-  margin: 120px auto;
+  margin: 40px auto;
   width: 200px;
 }
 
@@ -55,7 +69,7 @@ h1 {
 /* Candle */
 .candle {
   position: absolute;
-  top: -70px;
+  top: -65px;
   left: 50%;
   transform: translateX(-50%);
   width: 15px;
@@ -74,7 +88,7 @@ h1 {
   width: 15px;
   height: 25px;
   background: orange;
-  border-radius: 50% 50% 50% 50%;
+  border-radius: 50%;
   animation: flicker 0.2s infinite alternate;
 }
 
@@ -83,58 +97,62 @@ h1 {
   to { transform: translateX(-50%) scale(1.2); }
 }
 
-/* Blow text */
+/* TEXT */
 p {
   color: white;
-  font-size: 1.2em;
+  font-size: 1.1em;
+  margin-top: 15px;
 }
 
+/* CONTINUE BUTTON */
 #nextLink {
   display: none;
   margin-top: 25px;
-  padding: 12px 25px;
+  padding: 12px 28px;
   background: #ff6f91;
   color: white;
   text-decoration: none;
   border-radius: 25px;
-  font-size: 1.2em;
+  font-size: 1.1em;
   transition: 0.3s;
 }
 
 #nextLink:hover {
   background: #ff9671;
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
-
-
 </style>
 </head>
 
 <body>
 
-<h1>🎉 Happy Birthday! 🎉</h1>
+<div class="container">
 
-<div class="cake">
-  <div class="candle" onclick="blowCandle()">
-    <div class="flame" id="flame"></div>
+  <h1>🎉 Happy Birthday! 🎉</h1>
+
+  <div class="cake">
+    <div class="candle" onclick="blowCandle()">
+      <div class="flame" id="flame"></div>
+    </div>
+
+    <div class="layer top"></div>
+    <div class="layer middle"></div>
+    <div class="layer"></div>
   </div>
 
-  <div class="layer top"></div>
-  <div class="layer middle"></div>
-  <div class="layer"></div>
+  <p>Click the candle to blow it out 🕯️</p>
+
+  <a href="HBDGLE2.html" id="nextLink">Continue 🎁</a>
+
 </div>
-
-<p>Click the candle to blow it out 🕯️</p>
-
-<a href="HBDGLE2.html" id="nextLink">Continue 🎁</a>
 
 <script>
 function blowCandle() {
   document.getElementById("flame").style.display = "none";
-  alert("Make a wish! 🎂✨");
   document.getElementById("nextLink").style.display = "inline-block";
 }
 </script>
 
 </body>
 </html>
+
