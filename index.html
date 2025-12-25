@@ -19,19 +19,33 @@ body {
   text-align: center;
 }
 
-/* MAIN CONTAINER (Cardd-style) */
+/* MAIN CONTAINER */
 .container {
   width: 100%;
   max-width: 420px;
   padding: 20px;
 }
 
-/* TEXT */
-h1 {
-  font-size: 2.5em;
-  color: #fff;
+/* TITLE */
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 0;
   margin-bottom: 20px;
+}
+
+.title h1 {
+  font-size: 2.2em;
+  color: #fff;
+  margin: 0;
   animation: pop 1.5s ease-in-out infinite alternate;
+  white-space: nowrap;
+}
+
+.title .emoji {
+  font-size: 1.8em;
 }
 
 @keyframes pop {
@@ -46,7 +60,7 @@ h1 {
   width: 200px;
 }
 
-/* Cake layers */
+/* CAKE LAYERS */
 .layer {
   background: #ff9aa2;
   height: 50px;
@@ -66,7 +80,7 @@ h1 {
   margin-left: 30px;
 }
 
-/* Candle */
+/* CANDLE */
 .candle {
   position: absolute;
   top: -65px;
@@ -79,7 +93,7 @@ h1 {
   cursor: pointer;
 }
 
-/* Flame */
+/* FLAME */
 .flame {
   position: absolute;
   top: -25px;
@@ -128,7 +142,11 @@ p {
 
 <div class="container">
 
-  <h1>🎉 Happy Birthday! 🎉</h1>
+  <div class="title">
+    <span class="emoji">🎉</span>
+    <h1>Happy Birthday!</h1>
+    <span class="emoji">🎉</span>
+  </div>
 
   <div class="cake">
     <div class="candle" onclick="blowCandle()">
