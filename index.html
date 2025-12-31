@@ -24,7 +24,7 @@ body {
   padding-top: 40px;
 }
 
-/* TITLE */
+/* TITLE WITH ANIMATION */
 .title {
   display: flex;
   align-items: center;
@@ -38,16 +38,34 @@ body {
   color: #fff;
   margin: 0;
   white-space: nowrap;
+  /* Text animation */
+  animation: bounceIn 1.5s ease-out forwards, pulse 2s infinite 1.5s;
 }
 
 .title .emoji {
   font-size: 1.6em;
+  /* Emoji animation to match text */
+  animation: bounceIn 1.5s ease-out forwards, pulse 2s infinite 1.5s;
 }
 
-/* 🎂 CAKE (FIX IS HERE) */
+/* Title animation keyframes */
+@keyframes bounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.05); opacity: 1; }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* CAKE MOVED DOWN */
 .cake {
   position: relative;
-  margin: 50px auto 0; /* ⬅️ PUSH CAKE DOWN */
+  margin: 80px auto 0; /* Increased top margin to move down */
   width: 200px;
 }
 
@@ -157,3 +175,4 @@ function blowCandle() {
 
 </body>
 </html>
+
