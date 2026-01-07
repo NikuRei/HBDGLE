@@ -5,18 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>HERE'S MY GIFT FOR YOU 🎉</title>
 
-
-
 <style>
   body {
     margin: 0;
     height: 100vh;
-    background: #b3e5ff; /* light blue */
+    background: #b3e5ff; /* light blue background */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     font-family: sans-serif;
+  }
+
+  /* Neon Heading */
+  #heading {
+    position: absolute;
+    top: 20px;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    color: #5672C8; /* changed color */
+    text-shadow:
+      0 0 5px #5672C8,
+      0 0 10px #5672C8,
+      0 0 20px #5672C8,
+      0 0 40px #5672C8,
+      0 0 80px #5672C8;
+    animation: flicker 2s infinite;
+  }
+
+  @keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+    20%, 22%, 24%, 55% { opacity: 0.5; }
   }
 
   /* Gift */
@@ -25,6 +47,7 @@
     cursor: pointer;
     animation: bounce 1.5s infinite;
     z-index: 2;
+    margin-top: 60px; /* so it’s below the heading */
   }
 
   @keyframes bounce {
@@ -45,7 +68,7 @@
     100% { transform: translateY(110vh) rotate(360deg); }
   }
 
-  /* Video */
+  /* Video Popup */
   #videoContainer {
     display: none;
     position: fixed;
@@ -66,6 +89,7 @@
 
 <body>
 
+<div id="heading">HERE'S MY GIFT FOR YOU 🎉</div>
 <div id="gift">🎁</div>
 
 <div id="videoContainer">
@@ -100,7 +124,7 @@ function createConfetti() {
 
 createConfetti();
 
-// Gift click
+// Gift click action
 gift.onclick = () => {
   music.play();
   videoContainer.style.display = "flex";
