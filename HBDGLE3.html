@@ -1,44 +1,56 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 
-<title>Twin</title>
-  
+<!-- 🔑 THIS IS THE MOST IMPORTANT FIX -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TWIN</title>
+
 <style>
   body { 
+    margin: 0;
+    min-height: 100vh;
     display: flex; 
     flex-direction: column;
     justify-content: center; 
     align-items: center; 
-    height: 100vh; 
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     font-family: 'Segoe UI', sans-serif; 
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  #container {
+    width: 100%;
+    max-width: 360px; /* perfect mobile width */
+    display: flex;
+    justify-content: center;
   }
 
   .video-box {
-    width: 300px; 
-    height: 350px; 
+    width: 100%;
+    min-height: 320px;
     border-radius: 20px; 
     overflow: hidden; 
     background: linear-gradient(145deg, #6a11cb, #2575fc);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3), 0 0 20px rgba(38, 198, 218, 0.5);
+    box-shadow: 
+      0 10px 25px rgba(0,0,0,0.3), 
+      0 0 20px rgba(38, 198, 218, 0.5);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 15px;
     padding: 20px;
-    transition: background 0.5s ease, opacity 0.5s ease;
-    animation: bounce 2s infinite alternate;
-    opacity: 1;
     text-align: center;
-    position: relative;
+    animation: bounce 2s infinite alternate;
   }
 
   @keyframes bounce {
-    0% { transform: translateY(0px); }
-    100% { transform: translateY(-20px); }
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-15px); }
   }
 
   .circle-pic { 
@@ -51,56 +63,57 @@
   }
 
   .emoji-gift { 
-    font-size: 60px; 
+    font-size: 70px; 
     cursor: pointer; 
     transition: transform 0.2s ease; 
   }
-  .emoji-gift:hover { transform: scale(1.2); }
+  .emoji-gift:active { transform: scale(1.2); }
 
-  .label, .letter {
+  .label {
     color: #fff;
     font-weight: bold;
+    font-size: 1.1rem;
     text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
   }
 
-  .label { font-size: 1rem; }
-  .letter { font-size: 0.9rem; font-weight: normal; }
+  .letter {
+    color: #fff;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  }
 
   video { 
     width: 100%; 
     border-radius: 15px; 
-    outline: none; 
     display: none;
   }
 
   button {
-    padding: 10px 20px; 
+    margin-top: 20px;
+    padding: 12px 25px; 
     border: none; 
-    border-radius: 12px; 
+    border-radius: 14px; 
     background: linear-gradient(135deg, #00c6ff, #0072ff);
     color: #fff; 
     font-weight: bold;
+    font-size: 1rem;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0,198,255,0.6);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    margin-top: 15px;
   }
 
-  button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(0,198,255,0.8);
+  button:active {
+    transform: scale(0.95);
   }
-
-  .fade-out { opacity: 0; }
-  .fade-in { opacity: 1; }
 </style>
 </head>
+
 <body>
 
 <div id="container">
-  <!-- Box 1 -->
-  <div class="video-box fade-in">
-    <img class="circle-pic" src="https://i.pinimg.com/236x/60/7a/34/607a34055faa670c500bca7868c5830e.jpg" alt="Meme 1">
+  <div class="video-box">
+    <img class="circle-pic"
+      src="https://i.pinimg.com/236x/60/7a/34/607a34055faa670c500bca7868c5830e.jpg">
     <div class="label">Hello Kid/Twin</div>
   </div>
 </div>
@@ -108,77 +121,79 @@
 <button id="continueBtn">Continue</button>
 
 <script>
-  const boxes = [
-    { type: "text", img: "https://i.pinimg.com/736x/f7/67/7d/f7677d237bf844773b83bdc8bf99af2a.jpg", text: "Happy Birthday again pookie 🎉 😘 Here's Winsell singing happy birthday " },
-    { type: "video", emoji: "🎁", videoSrc: "HBDGLE.mp4" }, // replace with your video file
-    { 
-      type: "letter", 
-      text: `Happy Birthday! 🎂🥳
+const boxes = [
+  { 
+    type: "text", 
+    img: "https://i.pinimg.com/736x/f7/67/7d/f7677d237bf844773b83bdc8bf99af2a.jpg", 
+    text: "Happy Birthday again pookie 🎉 😘 Here's Winsell singing happy birthday"
+  },
+  { 
+    type: "video", 
+    emoji: "🎁", 
+    videoSrc: "HBDGLE.mp4" 
+  },
+  { 
+    type: "letter", 
+    text: `Happy Birthday! 🎂🥳
 
 I hope your day is filled with endless smiles, laughter, and love. 
 You bring so much joy and happiness into the lives of everyone around you, and today is all about celebrating YOU. 
 May all your dreams come true this year, and I hope masagot mga wish mo. 
 Always remember how special and loved you are ❤️
 
-You're getting older lol wishing you the happiest birthday ever, pookie! 😘🎉`,
-      final: true
-    }
-  ];
+You're getting older lol wishing you the happiest birthday ever, pookie! 😘🎉`
+  }
+];
 
-  let currentIndex = 0;
+let index = 0;
 
-  function showNextBox() {
-    const container = document.getElementById('container');
-    const oldBox = document.querySelector('.video-box');
-    
-    if(oldBox) {
-      oldBox.remove(); // remove old box immediately
-    }
+function showNextBox() {
+  const container = document.getElementById("container");
+  container.innerHTML = "";
 
-    if (currentIndex >= boxes.length) return;
-
-    const boxData = boxes[currentIndex];
-    const newBox = document.createElement('div');
-    newBox.className = 'video-box fade-in';
-
-    if (boxData.type === "text") {
-      newBox.innerHTML = `
-        <img class="circle-pic" src="${boxData.img}" alt="Meme Image">
-        <div class="label">${boxData.text}</div>
-      `;
-    } else if (boxData.type === "video") {
-      newBox.innerHTML = `
-        <div class="emoji-gift" onclick="playVideo(this)">${boxData.emoji}</div>
-        <video id="giftVideo" src="${boxData.videoSrc}" controls></video>
-      `;
-    } else if (boxData.type === "letter") {
-      newBox.innerHTML = `
-        <div class="letter">${boxData.text.replace(/\n/g,"<br>")}</div>
-      `;
-    }
-
-    container.appendChild(newBox);
-    currentIndex++;
+  if (index >= boxes.length) {
+    window.location.href = "HBDGLE4.html";
+    return;
   }
 
-  function playVideo(emojiEl) {
-    emojiEl.style.display = "none"; // hide the gift emoji
-    const video = emojiEl.parentElement.querySelector('#giftVideo');
-    video.style.display = "block"; // show video
-    video.play();
+  const box = boxes[index];
+  const div = document.createElement("div");
+  div.className = "video-box";
+
+  if (box.type === "text") {
+    div.innerHTML = `
+      <img class="circle-pic" src="${box.img}">
+      <div class="label">${box.text}</div>
+    `;
   }
 
-  // Continue button logic
-  document.getElementById('continueBtn').addEventListener('click', () => {
-    const oldBox = document.querySelector('.video-box');
-    if(oldBox.querySelector('.letter')){ 
-      // last box
-      window.location.href = "HBDGLE4.html";
-    } else {
-      showNextBox();
-    }
-  });
+  if (box.type === "video") {
+    div.innerHTML = `
+      <div class="emoji-gift" onclick="playVideo(this)">🎁</div>
+      <video src="${box.videoSrc}" controls></video>
+    `;
+  }
+
+  if (box.type === "letter") {
+    div.innerHTML = `
+      <div class="letter">${box.text.replace(/\n/g,"<br>")}</div>
+    `;
+  }
+
+  container.appendChild(div);
+  index++;
+}
+
+function playVideo(el) {
+  el.style.display = "none";
+  const video = el.nextElementSibling;
+  video.style.display = "block";
+  video.play();
+}
+
+document.getElementById("continueBtn").onclick = showNextBox;
 </script>
 
 </body>
 </html>
+
