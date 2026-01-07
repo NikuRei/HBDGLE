@@ -1,1 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>HERE'S MY GIFT FOR YOU 🎉</title>
+
+
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: #b3e5ff; /* light blue */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: sans-serif;
+  }
+
+  /* Gift */
+  #gift {
+    font-size: 90px;
+    cursor: pointer;
+    animation: bounce 1.5s infinite;
+    z-index: 2;
+  }
+
+  @keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  /* Confetti */
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    animation: fall 3s linear infinite;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(-10vh) rotate(0deg); }
+    100% { transform: translateY(110vh) rotate(360deg); }
+  }
+
+  /* Video */
+  #videoContainer {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+  }
+
+  video {
+    width: 90%;
+    max-width: 500px;
+    border-radius: 12px;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="gift">🎁</div>
+
+<div id="videoContainer">
+  <video id="birthdayVideo" controls>
+    <source src="HBDAYGLEGLE.mp4" type="video/mp4">
+  </video>
+</div>
+
+<!-- Background birthday music -->
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const gift = document.getElementById("gift");
+const videoContainer = document.getElementById("videoContainer");
+const video = document.getElementById("birthdayVideo");
+const music = document.getElementById("bgMusic");
+
+// Create confetti
+function createConfetti() {
+  for (let i = 0; i < 40; i++) {
+    const confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.backgroundColor =
+      `hsl(${Math.random() * 360}, 100%, 50%)`;
+    confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
+    document.body.appendChild(confetti);
+  }
+}
+
+createConfetti();
+
+// Gift click
+gift.onclick = () => {
+  music.play();
+  videoContainer.style.display = "flex";
+  video.play();
+  gift.style.display = "none";
+};
+</script>
+
+</body>
+</html>
 
